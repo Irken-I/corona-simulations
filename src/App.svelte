@@ -63,7 +63,7 @@
   let custom_scenario_url_prefix = 'https://coronastoragemyvs.blob.core.windows.net/coviducb/'
   let custom_scenario_url_postfix = '-outcome_1.json'
 
-  let oneLineAttribution = `Corosim was created by <a href="https://futurice.com/" style="color: #009f77;">Futurice</a> on top of <a href="https://gabgoh.github.io/">Gabriel Goh's</a> <a href="https://gabgoh.github.io/COVID/index.html">Epidemic Calculator</a>.`
+  let oneLineAttribution = ` Esta es una adaptacion de Corosim, la calculadora de Futurice hecha por Atte Juvonen y su equipo sobre Epidemic Calculator de Gabriel Goh. `
 
   // R0 paramConfig is stored at a separate object because its default value is updated by a reactive function.
   // Do not refactor into paramConfig.
@@ -972,16 +972,26 @@
     
   </div>
 
-  <Collapsible title="Attribution" bind:collapsed={collapsed} defaultCollapsed={false}> 
+  <Collapsible title="Reconocimientos" bind:collapsed={collapsed} defaultCollapsed={false}> 
     <div>
-      {@html replaceFuturiceFromTextWithLogo(oneLineAttribution)}
+      { (oneLineAttribution)}
     </div>
     <div>
-      For any enquiries, contact Atte Juvonen at futurice.com.
+      A continuacion se encuentran los enlaces a las calculadoras mencionadas.
     </div>
     <div>
-      <a href="https://github.com/futurice/corona-simulations">Source code available on GitHub.</a>
+      <a href="https://corosim.fi/">Corosim.</a>
+      <a href="https://gabgoh.github.io/COVID/index.html">Epidemic Calculator</a>.
     </div>
+
+    <div>
+      Para hacer esta adaptacion, conté con la valiosa ayuda de Enrique Tovar y de Camilo Mendoza quienes me dieron apoyo técnico y de Cristhian Gonzales en el diseño gráfico. 
+    </div>
+
+    <div>
+      Para sugerencias y preguntas me puede contactar en juansebastianpuentesc@gmail.com. 
+    </div>
+
   </Collapsible>
 
 </div>
