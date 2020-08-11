@@ -204,7 +204,7 @@ function fetchRtEstimateData() {
 }
 
 function fetchHSData() {
-    fetchOrExit("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/finnishCoronaData/v2", callbackHSConfirmedCasesAndDeaths)
+    fetchOrExit("https://w3qa5ydb4l.execute-api.eu-west-1.amazonaws.com/prod/processedThlData", callbackHSConfirmedCasesAndDeaths)
     // Please see the callback function; it initiates a second fetch to a different file.
 }
 

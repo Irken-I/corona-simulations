@@ -38,7 +38,7 @@
     function formatDayChange(k, bar, P_all) {
         const delta = get_count_delta(k, bar, P_all)
         if (isNaN(delta)) return ""
-        return `${formatDelta(delta)} on day ${getDay(active_)}`
+        return `${formatDelta(delta)} al día ${getDay(active_)}`
     }
 
     function getDay(bar) {
@@ -86,24 +86,24 @@
 </style>
 
 <div class="legendtext" style="position:absolute; left:-110px; top:-155px; width:230px; height: 100px; font-size: 13px; line-height:16px; font-weight: normal; text-align: center; background-color: white; z-index: 10000;">
-    <b>Scenario outcome</b>
+    <b>Resultado del escenario: </b>
     <span style="text-align: left;">
         <ul style="margin-top:3px;">
-            <li>{formatCount(P_all[P_all.length-1]['fatalities'])} fatalities in first {P_all.length} days.</li>
+            <li>{formatCount(P_all[P_all.length-1]['fatalities'])} Muertes en los primeros {P_all.length} días.</li>
             {#if peakICUDay < P_all.length-50}
-                <li>Peak ICU on {getDate(firstBarDate, peakICUDay)}.</li>
-                <li>{peakICUCount} ICU patients at peak.</li>
+                <li>Pico UCI en {getDate(firstBarDate, peakICUDay)}.</li>
+                <li>{(peakICUCount)} Pacientes UCI en el Pico.</li>
             {:else}
-                <li>Peak possibly not reached!</li>
+                <li>Pico no alcanzado!</li>
             {/if}
-            <li>{Math.round(100 * P_all[P_all.length-1]['susceptible'] / N)}% remain susceptible.</li>
+            <li>{Math.round(100 * P_all[P_all.length-1]['susceptible'] / N)}% Permanece suceptible.</li>
         </ul>
     </span>
 </div>
 
 
 <div class="legendtext" style="position:absolute; left:-70px; top:-35px; width:150px; height: 100px; font-size: 13px; line-height:16px; font-weight: normal; text-align: center">
-<b>Highlighted day</b>
+<b>Día resaltado: </b>
 <!--<br>Day {getDay(active_)}-->
 <br>{getDate(firstBarDate, getDay(active_))}
 </div>

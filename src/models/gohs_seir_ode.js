@@ -168,9 +168,7 @@ export function map_goh_states_into_UFStates(goh_states, N, P_ICU) {
 
 export function goh_default_action_markers(P_all_historical) {
     return [
-        new ActionMarkerData(108, "Lift restrictions", 0.3),
-        new ActionMarkerData(136, "Thing happens", -0.2),
-        new ActionMarkerData(165, "Schools open", 0.13),
+        new ActionMarkerData(180, "Levantamiento de restricciones", 0.3),
     ].filter(am => {
         // Prevent action markers from falling behind the historical marker
         return am.day > P_all_historical.length

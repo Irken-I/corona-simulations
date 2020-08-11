@@ -221,7 +221,7 @@
                 <div class="paneltext" style="height:20px; text-align: right">
 
                     <div class="paneltitle unselectable" style="top:0px; position: relative; text-align: left; white-space: nowrap;">
-                        {actionMarkerData[AM_NAME]} on {displayDate}
+                        {actionMarkerData[AM_NAME]} en {displayDate}
                     </div>
 
                     {#if actionMarkerData.isConfigurable()}
@@ -229,7 +229,7 @@
                             <span style="color: {InterventionAmt < 1 ? '#4daf4a' : '#f0027f'}">
                                 {formatDelta(-100*(1-InterventionAmt))}%
                             </span>
-                            transmission
+                            transmisión
                             <span style="font-size: 11px;">
                                 ({@html math_inline("\\mathcal{R}_0=" + adjustedR0.toFixed(2) )})
                             </span>
@@ -257,7 +257,7 @@
                     class="clickableIcons"
                     style="color: #CCC; position: absolute;"
                 />
-                <span style="position: absolute; left: 20px;">{actionMarkerData[AM_EXPANDED] ? "Hide config" : "Configure"}</span>
+                <span style="position: absolute; left: 20px;">{actionMarkerData[AM_EXPANDED] ? "Ocultar configuración" : "Configurar"}</span>
             </div>
 
             {#if actionMarkerData[AM_EXPANDED]}
@@ -269,13 +269,13 @@
                     />
                 </div>
                 <div style="background-color: #FFF;">
-                    <div class="caption paneldesc unselectable" style="margin-top: 6px;">Name</div>
+                    <div class="caption paneldesc unselectable" style="margin-top: 6px;">Nombre</div>
                     <input bind:value={actionMarkerData[AM_NAME]} style="width: 99%;">
                     <input class="range" style="width: 100%;" type=range bind:value={actionMarkerData[AM_EFFECT]} min=-2 max=1 step=0.01 on:mousedown={lock_yaxis}>
                     <div class="caption paneldesc unselectable" style="margin-top: -10px; text-align:left;">
-                        {@html math_inline("←")} Bad
+                        {@html math_inline("←")} Malo
                         <span style="float:right;">
-                        Good {@html math_inline("→")}
+                        Bueno {@html math_inline("→")}
                         </span>
                     </div>
                 </div>

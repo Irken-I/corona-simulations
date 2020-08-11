@@ -181,14 +181,14 @@
             top: -5px;
             left: 0px;
             pointer-events: none;
-            background-color: #f0b402;
+            background-color: #828282;
             opacity: 0.2">
 
             <div style="position: absolute; left: {leftPxHistoricalText}px; width: {leftPx+13-leftPxHistoricalText}px; text-align: right; margin-top: 10px; font-weight: normal; font-size: 20px;">
-                <span style="margin-right: 10px">Historical estimates</span>
+                <span style="margin-right: 10px">Históricos</span>
             </div>
             <div style="position: absolute; left: {leftPx+13}px; top: 0px; width: 200px; text-align: left; margin-top: 10px; margin-left: 10px; font-weight: normal; font-size: 20px;">
-                Model predictions
+                Predicción
                 <br>
                 <span style="font-size: 12px;">
                     {@html math_inline("→ \\mathcal{R}_0=" + R0.toFixed(2))}

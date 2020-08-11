@@ -69,7 +69,7 @@
   // R0 paramConfig is stored at a separate object because its default value is updated by a reactive function.
   // Do not refactor into paramConfig.
   let paramConfigR0 = {
-    description: `Basic Reproduction Number {R0} (initially)`,
+    description: `Tasa basica de reproducción {R0}`,
     isDefaultValueAutomaticallyGeneratedFromData: true,
     defaultValue: 2, // Will be overwritten by a reactive function.
     minValue: 0.01,
@@ -126,7 +126,7 @@
   }
 
 
-  $: N                 = 5538328 // 2020 Finnish population count
+  $: N                 = 50372424 // 2020 Poblacion de Colombia
   $: logN              = Math.log(N)
   $: I0                = 1
   $: undetected_infections = paramConfig["undetected_infections"].defaultValue
@@ -143,7 +143,7 @@
   $: P_ICU             = paramConfig["icu_rate_from_hospitalized"].defaultValue
   $: icuCapacity       = paramConfig["icu_capacity"].defaultValue
 
-  function toggleZoomStates() {
+  function toggleZoomStates() { 
     dt *= 2
     if (dt > 4) dt = 2
   }
@@ -464,13 +464,13 @@
     // First death milestone
     for (var i = 0; i < P.length; i+=1) {
       if (P[i]['fatalities'] >= 0.5) {
-        milestones.push([i, "First death"])
+        milestones.push([i, "Primera Muerte"])
         break
       }
     }
     
     // Peak ICU milestone
-    milestones.push([peakICUDay, "Peak: " + format(",")(peakICUCount) + " ICU"])
+    milestones.push([peakICUDay, "Pico: " + format(",")(peakICUCount) + " UCI"])
 
     // Historical date offset milestone
     const lastHistoricDate = getDate(firstBarDate, cutoffHistoricDay-1)
@@ -478,7 +478,7 @@
 
     // Filter out milestones which are outside the currently zoomed in area
     milestones = milestones.filter(milestone => {
-      return milestone[0] < 100*dt
+      return milestone[0] < 300*dt
     })
 
     return milestones
@@ -716,13 +716,13 @@
 
 
 <h2><div>
-  <span style="">Corosim</span>
-  <img style="vertical-align:middle" src="flag.png" title="Finland" alt="finnish flag" width="100">
+  <span style=""> </span>
+  <img style="vertical-align:middle" src="flag.png" title="Finland" alt="finnish flag" width="400">
 </div></h2>
-<h5>Historical Estimates & Model Predictions for COVID-19 in Finland</h5>
+<h5> </h5>
 
 <div class="mobileWarning">
-  <h3>Sorry! This web app is not optimized for a mobile experience or small screens. If you can, please come back on a desktop device.</h3>
+  <h3>Lo sentimos, esta app no esta optimizada para pantallas pequeñas.</h3>
 </div>
 
 <div class="chart" style="display: flex; max-width: 1120px">
@@ -742,7 +742,7 @@
 
     </div>
 
-    <!-- ChartCompanion (scenario outcome and highlighted day, left side of chart). -->
+    <!-- ChartCompanion (Resultado del Escenario and highlighted day, left side of chart). -->
     <div style="position:relative; top:100px; right:-115px">
       <ChartCompanion bind:stateMeta = {stateMeta}
         N = {N}
@@ -899,7 +899,7 @@
 </div>
 
 <p class="center">
-  <b>Parameter configuration</b>
+  <b>Configuración de Parametros</b>
 </p>
 
 <!-- Large popup when user clicks a question mark icon. -->
@@ -940,7 +940,7 @@
 
       <div class="column" style="margin-left: 0;">
         <ParameterKnob p = {paramConfigR0} bind:value = {R0} bind:popupHTML = {popupHTML} />
-        <div class="paneltext paneldesc"><i>Please note that R0 is affected by action markers (those vertical things on the chart).</i></div>
+        <div class="paneltext paneldesc"><i>Notar que este número es afectado por los marcadores de acción (Las lineas verticales en el cuadro).</i></div>
       </div>
       <div class="column">
         <ParameterKnob p = {paramConfig["undetected_infections"]} bind:value = {undetected_infections} bind:popupHTML = {popupHTML} />
@@ -970,152 +970,8 @@
         <p style="white-space: pre-wrap; color: #777; line-height: 17px;">{@html JSON.stringify(custom_params, null, 4)}</p>
       </div>
     {/if}
-
-  </div>
-</div>
-
-{#if selectedModel === MODEL_GOH}
-
-  <Collapsible title="Introduction" bind:collapsed={collapsed} defaultCollapsed={false}>
-    <div>
-      Corosim combines historical estimates & model predictions to provide a complete overview of the Coronavirus epidemic in Finland.
-      This means you can use Corosim to get some insight towards questions such as "how many Finns have been infected so far" or "when will the epidemic peak".
-    </div>
-    <div>
-      Our model is a classical epidemiological model (deterministic SEIR).
-      The model is initialized with the latest historical estimate. Parameter choices impact
-      both historical estimates and model predictions. Although we have done a lot of research to provide sensible default values,
-      you probably disagree with some of our choices. That's why we wanted to provide you the possibility of tuning parameters by yourself.
-      You can also set your own action markers to model the effects of different policy changes (those vertical things on top of the chart).
-      You can drag action markers, you can add new action markers, you can delete old action markers, and you can configure the name
-      and effect of an action (effect on disease transmissions, in percentage).
-    </div>
-    <div>
-      Historical estimates are updated daily based on data provided by <a href="https://github.com/HS-Datadesk/koronavirus-avoindata">Helsingin Sanomat</a>.
-      We would like to emphasize that historical estimates have not been created with the model. Although the model is a legitimate epidemiological
-      model, our historical estimates are merely simple "back of the napkin" type calculations based on confirmed cases, confirmed deaths,
-      and hospitalization data. For example, the estimate for the number of infected is based on the number of confirmed cases,
-      but is also affected by various parameters, such as the percentage of undetected infections, length of the incubation period,
-      how long individuals remain infectious, and so forth. We refer
-      to <a href="https://github.com/futurice/corona-simulations/blob/master/src/models/historical_estimates.js#L4">the source code</a> for
-      details on historical estimates.
-    </div>
-    <div>
-      At this time <i>no other</i> website provides a service like this. For example, other Coronavirus modelling websites
-      typically begin the simulation from a theoretical "day zero" which can not be configured according to estimates of the current situation
-      (typically you can only adjust the number of infected). We are in the middle of the epidemic &#8212; long past day zero.
-      Doesn't it make sense to start the simulation from the most recent estimate of the current situation? That's what Corosim does.
-    </div>
-    <div>
-      We have <a href="https://github.com/futurice/corona-simulations">open sourced Corosim on GitHub</a> under the MIT license.
-      The README has instructions on
-      <a href="https://github.com/futurice/corona-simulations#want-to-fork-this-repo-and-customize-it-for-your-country">how to</a>
-      customize Corosim for different countries or local areas.
-    </div>
-  </Collapsible>
-
-  <Collapsible title="R0 estimation" bind:collapsed={collapsed} defaultCollapsed={true}>
-    <div>
-      {@html stylizeExpressions(paramConfigR0['longformDefaultValueJustification'])}
-    </div>
-  </Collapsible>
-
-  <Collapsible title="More on model predictions" bind:collapsed={collapsed} defaultCollapsed={true}>
-    <div>
     
-      Corosim uses Gabriel Goh's implementation of a
-      <b><a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model">SEIR</a></b> model    
-      (<b>S</b>usceptible → <b>E</b>xposed → <b>I</b>nfected → <b>R</b>emoved).
-      This is a classical infectious disease model, commonly used to this day in the front lines of research.
-      For example, the Finnish health authority THL
-      <a href="https://thl.fi/fi/-/koronaepidemian-mallinnus-ihmiskontaktien-rajoittaminen-vaikuttaa-epidemian-kestoon-ja-paivittaisten-tartuntojen-maaraan">
-        uses a similar SEIR model for their official Coronavirus forecasts.</a> One key difference between Corosim and THL's model is that
-        THL's model is initialized to a theoretical "day zero", whereas Corosim is initialized to the latest historical estimate.
-        Another key difference is that THL's model is divided into age groups, Corosim's model is not.
-        These are certainly not the only differences between these models &#8212; unfortunately THL has not published their entire model,
-        so we are unable to provide a thorough comparison. Most of the discussion around models in Finland seems to revolve around parameter
-        choices, rather than models themselves.
-      
-    </div>
-    <div>
-      The dynamics of this model are characterized by a set of four ordinary differential equations that correspond to the stages of the disease's progression:
-      <span style="color:#777">{@html ode_eqn}</span>
-      The clinical dynamics in this model are an elaboration on SEIR that simulates the disease's progression at a higher resolution,
-      subdividing {@html math_inline("R")} into <i>mild</i> (patients who recover without the need for hospitalization), <i>moderate</i>
-      (patients who require hospitalization but survive) and <i>fatal</i> (patients who require hospitalization and do not survive).
-      Each of these variables follows its own trajectory to the final outcome, and the sum of these compartments add up to the {@html math_inline("R")} in SEIR.
-      <br><br>
-      Note that the model is a simplification of reality in many ways:
-    </div>
-    <ul>
-      <li>All hospitalizations are assumed to occur immediately after the infectious period.</li>
-      <li>Individuals who are recovering in home or hospital are assumed to be completely isolated.</li>
-      <li>Hospitalization duration is assumed to be the same for regular ward, icu, and fatalities.</li>
-      <li>Icu capacity is just a visual indicator, exceeding capacity has no effect on fatalities.</li>
-      <li>All fatalities are assumed to come from hospitals. In reality, many fatalities come from nursing homes,
-          which means that this model overestimates hospitalization and ICU counts. Note that the model does <i>not</i>
-          necessarily underestimate fatalities; the fatality rate can be adjusted to take into account all deaths,
-          regardless of where they occur.</li>
-    </ul>
-  </Collapsible>
-
-  <Collapsible title="Why the latest historical estimate is several days old" bind:collapsed={collapsed} defaultCollapsed={true}>
-    <div>
-      You may have noticed that the latest historical estimate is several days old, and you may be wondering if historical estimates are updated.
-      Yes, historical estimates are updated every 6 hours. You can expect to see changes at least once per day, depending
-      on how often THL updates their data. Unfortunately we do not have reliable numbers for the <i>most recent</i> days, so we have chosen
-      to display model predictions for those days instead of displaying historical estimates.
-    </div>
-    <div>
-      Why don't we have reliable numbers for the most recent days? This is caused by two separate issues.
-      As an example, let's consider the number of active infections.
-      The estimate for active infections is based on confirmed cases (and assumptions and parameters). If we have 10 confirmed cases today,
-      we can assume that those cases were infected several days ago. So if we wanted to estimate the number of active infections today,
-      we would need data from <i>several days in the future</i>. We don't have data from the future, so we can't use this method to estimate
-      the number of active infections today (though of course we can use other methods, such as model predictions, to estimate the number
-      of active infections today). In addition to this, another contributing factor is reporting delay to the confirmed case numbers themselves:
-      If you look at the number of confirmed cases reported for yesterday, write it down, and come back one week later to check that the number
-      hasn't changed, it probably has. For some reason, confirmed cases and deaths are often reported with a few days of delay.
-    </div>
-  </Collapsible>
-
-  <Collapsible title="Differences between Corosim and Epidemic Calculator" bind:collapsed={collapsed} defaultCollapsed={true}>
-    <div style="padding-bottom: 16.5px;">
-      {@html oneLineAttribution}
-    </div>
-    <div>
-      Key differences between Corosim and Epidemic Calculator:
-    </div>
-    <ul>
-      <li>Historical estimates. The original Epidemic Calculator initiates the simulation from a theoretical "day zero".
-          Corosim initiates the simulation from the latest historical estimate. Estimates are updated daily.</li>
-      <li>Corosim is tailored to the current situation in Finland. In addition to Finnish historical data, all the parameter default values have been chosen
-          based on latest scientific research, and specific to Finland when applicable. For example, the most crucial parameter in
-          this model is {@html math_inline('\\mathcal{R}_0')}. It's constantly changing and it's specific to the population which
-          you are trying to model (meaning, the {@html math_inline('\\mathcal{R}_0')} for Italy will be different than the
-          {@html math_inline('\\mathcal{R}_0')} for Finland). For these reasons a hardcoded default value for {@html math_inline('\\mathcal{R}_0')}
-          would become stale in a matter of days. Instead of using a hardcoded value, the default value for {@html math_inline('\\mathcal{R}_0')}
-          in Corosim is updated automatically every day based on the most recent Finnish data.</li>
-      <li>User-facing states are different (e.g. infected vs. infectious). The old Epidemic Calculator is a great educational tool about
-          the progression of epidemics in general, but our focus was on practical real-world questions related to this epidemic right now.
-          The states we have chosen to visualize are relevant for practical questions, such as "how many people are infected" or
-          "do we have enough health care capacity".</li>
-      <li>Multiple action markers. The old Epidemic Calculator only has a single action marker, labeled "intervention" and it can
-          only reduce the transmission of the virus, not increase it. What if you wanted to model the effect of <i>stopping</i> an intervention? How about
-          modelling multiple policy changes? You can do those things with Corosim. Action markers can be added, deleted, dragged,
-          renamed, and their effect on disease transmission can be tuned.</li>
-      <li>Scenario outcome summary. The old Epidemic Calculator does not have an easy way summarize an outcome. If you want to compare
-          two different strategies, you need to manually zoom out and eyeball the peak, fatalities, etc. Corosim provides a scenario outcome summary
-          of the most crucial metrics.</li>
-      <li>Small changes to the model itself: hospitalizations go to hospital without delay and fatalities are affected by the
-          same hospitalization time as recovering patients. These simplifications were motivated by a desire to make the parameterization
-          easier to communicate to the end user. For example, in the original Epidemic Calculator there is a parameter labelled
-          "Length of hospital stay", but it actually affects only those patients who eventually survive, not those who eventually die.
-          We noticed similar issues with parameters "Time to hospitalization" and "Case fatality rate". In the original Epidemic Calculator,
-          case fatality rate actually affects the hospitalization rate, but this effect is hidden from the end user.</li>
-      <li>Various design and UX improvements (real dates, more tooltips, reduced clutter, etc.) </li>
-    </ul>
-  </Collapsible>
+  </div>
 
   <Collapsible title="Attribution" bind:collapsed={collapsed} defaultCollapsed={false}> 
     <div>
@@ -1129,4 +985,5 @@
     </div>
   </Collapsible>
 
-{/if}
+</div>
+

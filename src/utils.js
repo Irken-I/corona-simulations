@@ -27,18 +27,18 @@ export function isValidDate(d) {
 
 const MONTHS = [
     'zero',
-    'Jan',
+    'Ene',
     'Feb',
-    'March',
-    'April',
+    'Mar',
+    'Abr',
     'May',
-    'June',
-    'July',
-    'Aug',
+    'Jun',
+    'Jul',
+    'Ago',
     'Sep',
     'Oct',
     'Nov',
-    'Dec'
+    'Dic'
 ]
 
 export function getMonth(date) {

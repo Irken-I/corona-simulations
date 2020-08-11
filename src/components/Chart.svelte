@@ -8,13 +8,14 @@
 
   const dispatch = createEventDispatcher();
 
-  function range(n){
+
+ function range(n){
     return Array(n).fill().map((_, i) => i);
   }
-
   $: showTip = function (i) {
     active_hover = i
   }
+ 
 
   export let states;
   export let stateMeta;
@@ -234,7 +235,8 @@
       {/each}
     </g>
 
-    <!-- x axis -->
+
+  <!-- x axis -->
     <g class="axis x-axis">
       {#each xScaleTime.ticks(100) as i}
 
@@ -246,7 +248,7 @@
         -->
 
         {#if i%30 == 0}
-          {#if getDate(firstBarDate, i).endsWith("01.2021")}
+          {#if getDate(firstBarDate, i).endsWith("06.2021")}
             <g class="tick" transform="translate({xScaleTime(i - xLabelOffset)},{height})">
               <text x="0" y="-4">2021</text>
             </g>
