@@ -1,5 +1,4 @@
 <script>
-  
   // Libraries
   import { scaleLinear } from "d3-scale";
   import { onMount } from 'svelte';
