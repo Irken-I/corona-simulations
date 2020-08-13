@@ -9,9 +9,9 @@
         "unitsDescriptor": "%",
         "isInteger": false,
         "isPercentage": true,
-        "longformDescription": "Porcentajes de las infecciones que no son contabilizadas como 'caso confirmado'.",
+        "longformDescription": "Porcentaje de las infecciones que no son contabilizadas como 'caso confirmado'.",
         "longformDoNotConfuseWith": "",
-        "longformEffects": "Este parametro afecta os estimados historicos, funciona como un multiplicador de los casos confirmados obervados.<br><br> Este parametro no afecta las predicciones del modelo (REVISAR).",
+        "longformEffects": "Este parametro afecta los estimados historicos, funciona como un multiplicador de los casos confirmados obervados.<br><br> Este parametro no afecta las predicciones del modelo (REVISAR).",
         "longformDefaultValueJustification": "Este numero es debatible, en el mundo diferentes estudios sugieren diversos numeros. Tambien tiene implicaciones directas en el numero de hospitalizaciones y la tasa de mortalidad, aunque en este modelo han sido separados."
     },
     "unrecorded_deaths": {
@@ -32,9 +32,9 @@
     "days_from_incubation_to_infectious": {
         "description": "Duracion del periodo de incubación {Tinc}",
         "isDefaultValueAutomaticallyGeneratedFromData": false,
-        "defaultValue": 12.0,
+        "defaultValue": 3.0,
         "minValue": 0.15,
-        "maxValue": 24,
+        "maxValue": 15,
         "stepValue": 0.0001,
         "unitsDescriptor": "days",
         "isInteger": false,
@@ -54,8 +54,8 @@
         "unitsDescriptor": "days",
         "isInteger": false,
         "isPercentage": false,
-        "longformDescription": "Average number of days a patient is infectious.",
-        "longformDoNotConfuseWith": "Note that in our model a patient is considered to be non-infectious after they isolate to either home or hospital. Therefore, this parameter should be set to a value which is less than the number of days that a patient is physically able to spread the virus (a patient may be physically able to spread the virus by coughing, but if they are coughing at home, they are considered to be non-infectious in our model).",
+        "longformDescription": "Numero de dias promedio en los que el paciente es infeccioso.",
+        "longformDoNotConfuseWith": "En este modelo un paciente es considerado no infeccioso despues de que esya aislado en casa o en el hospital.",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo.",
         "longformDefaultValueJustification": "Algunas personas nunca desarrollarán síntomas e infectarán a otras personas durante mucho tiempo. Algunas personas desarrollarán síntomas con rapidez y se aislarán rápidamente. Algunas personas se vuelven infecciosas antes de desarrollar síntomas, y después de desarrollar los síntomas, es posible que todavía estén interactuando en la comunidad por un corto tiempo, hasta que se aíslen. En promedio, se cree que los pacientes serán infecciosos aproximadamente 1 día sin síntomas y aproximadamente 1 día después de los síntomas, lo que arroja el valor predeterminado 2. Este parámetro es muy polémico por eso se ha tomado el informado por el Ministerio de Salud de 5.8 días. "
     },
@@ -84,7 +84,7 @@
         "unitsDescriptor": "days",
         "isInteger": false,
         "isPercentage": false,
-        "longformDescription": "romedio de días de hospitalización o UCI (excluida la población que permanece 0 días en el hospital).",
+        "longformDescription": "Promedio de días de hospitalización o UCI (excluida la población que permanece 0 días en el hospital).",
         "longformDoNotConfuseWith": "En Epidemic Calculator, la duración de la estadía en el hospital afectaba solo a los pacientes que finalmente sobrevivieron, no a los que finalmente murieron. En Corosim, este slider afecta a todas las hospitalizaciones. También se debe tener en cuenta que el modelo de Corosim tiene algunos supuestos simplificadores en relación con las UCI, este parámetro afecta tanto la estancia regular en la sala como en la UCI, y la UCI se modela como una vía alternativa a la sala regular, en comparación con la realidad, donde los pacientes suelen ir a la UCI después de pasar por primero por una sala regular.",
         "longformEffects": "Este parámetro afecta la cifra de recuperados en las estimaciones históricas. Sin embargo, no afecta los números de hospitalizaciones y UCI en estimaciones históricas, debido a que estos números se obtienen de datos observados (por lo que no es necesario estimarlos). <br> <br> Este parámetro afecta las predicciones del modelo (hospitalizaciones, UCI y recuperados).",
         "longformDefaultValueJustification": "Estos datos estan ajustados de acuerdo con informacion proveida por el Ministerio de Salud."
@@ -99,7 +99,7 @@
         "unitsDescriptor": "days",
         "isInteger": false,
         "isPercentage": false,
-        "longformDescription": "The average number of days a non-severe cases spends isolated in home.",
+        "longformDescription": "Numero promedio de dias de casos leves que se quedan aislados en casa.",
         "longformDoNotConfuseWith": "",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo.",
         "longformDefaultValueJustification": "Este valor es muy polémico, porque no disponemos de buenos datos sobre la proporción de casos asintomáticos, que pasan 0 días aislados en casa, arrastrando así la media."
