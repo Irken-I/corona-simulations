@@ -77,45 +77,28 @@
     unitsDescriptor: '',
     isInteger: false,
     isPercentage: false,
-    longformDescription: `Informally, {R0} describes how easily a virus can spread in a population.
-                          Note that {R0} is not just a property of the virus: the behavior of individuals
-                          within a population also affects how easily a virus can spread. To be specific,
-                          {R0} describes the number of new infections expected to be caused by a typical infected
-                          person within a population <i>where everyone is susceptible to the disease</i>.
-                          For example, if ${math_inline('\\mathcal{R}_0=2')}, then one infected person
-                          would be expected to infect 2 other people (on average, if everyone in the
-                          population was susceptible).`,
-    longformDoNotConfuseWith: `{Rt}, the <i>effective</i> reproduction number, describes the same thing,
-                               except for the assumption regarding susceptible population. {Rt} describes
-                               how many new infections are <i>effectively</i> caused by a typical infected
-                               person within a population (without assuming that everyone is susceptible to
-                               the disease). In the beginning of the epidemic, both {Rt} and {R0} are
-                               very close to each other. However, as more and more people have had the disease,
-                               they have (presumably) developed an immunity towards it. This makes it increasingly
-                               harder for the virus to spread, causing {Rt} to diverge lower from {R0}.
-                               `,
+    longformDescription: `De manera informal, el {R0} describe la facilidad con la que un virus se puede propagar en una población.
+                          Tenga en cuenta que los factores determinantes del {R0} no solo tienen que ver solo con características del virus si no también con el comportamiento de la población. 
+                          Siendo específicos, el {R0} describe la cantidad de nuevas infecciones que se espera sean causadas por una persona infectada dentro de una población <i> donde todos son susceptibles a la enfermedad </i>.
+                          Por ejemplo, si ${math_inline ('\\ {R} _0 = 2')}, entonces se esperaría que una persona infectada infectase a otras 2 personas (en promedio, si todos en la población son susceptibles).
+                          `,
+    longformDoNotConfuseWith: `El {Rt}, el número de reproducción <i> efectivo </i>, describe lo mismo que el {R0}, excepto por el supuesto relativo a la población susceptible. 
+                              El {Rt} describe cuántas nuevas infecciones son <i> efectivamente </i> causadas por una infección típica persona dentro de una población (sin asumir que todos son susceptibles a la enfermedad). 
+                              Al comienzo de la epidemia, tanto {Rt} como {R0} son muy parecidos el uno del otro. Sin embargo, a medida que más y más personas han tenido la enfermedad,
+                              han desarrollado (presumiblemente) una inmunidad hacia el virus. Esto lo hace cada vez más difícil para el virus propagarse, lo que hace que {Rt} diverja hacia abajo del {R0}.
+                                                        `,
     longformEffects: "",
-    longformDefaultValueJustification: `The default value for {R0} is estimated from 7 days of confirmed case counts.
-                                        This default value is not hardcoded, it is updated daily as new data comes in.
-                                        Because of delays in recording new cases, we do not use the most recent 7 days:
-                                        we exclude the most recent 5 days and then take the next 7 days.<br>
+    longformDefaultValueJustification: `El valor ppor defecto para {R0} se estima a partir de 7 días de recuentos de casos confirmados.
+                                        Debido a los retrasos en el registro de nuevos casos, no se utilizan los 7 días más recientes.
+                                        <br>
+                                        Existen muchos métodos para estimar las tasas de reproducción a partir de los datos. En este caso se usó una aproximación bayesiana como la descrita por 
+                                        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0002185"> Bettencourt & Ribeiro </a> en su artículo de 2008 
+                                        "Estimación bayesiana en tiempo real del potencial epidémico de enfermedades infecciosas emergentes"</a>, que fue <a href="http://systrom.com/blog/the-metric-we-need-to-manage-covid-19/"> adaptado y modificado</a>" para 
+                                        la epidemia de COVID-19 por Kevin Systrom. Este método produce una estimación de {Rt}, que se trasnforma en {R0} considerando una estimación de la proporción de población susceptible p:
                                         
-                                        <img src="latest_Rt.png" alt="Rt estimates over time" title="Rt estimates over time"/><br>
+                                        <br> <br>
+                                        ${math_inline ('\\ {R} _t = \\ {R} _0 * p')}
 
-                                        There are many methods to estimate reproduction numbers from data. We use a Bayesian
-                                        approach described by <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0002185">Bettencourt
-                                        & Ribeiro</a> in their 2008 paper "Real Time Bayesian Estimation of the Epidemic Potential
-                                        of Emerging Infectious Diseases"</a>, which was
-                                        <a href="http://systrom.com/blog/the-metric-we-need-to-manage-covid-19/">adapted and modified</a>
-                                        for the COVID-19 epidemic by Kevin Systrom. This method gives us an estimate of {Rt},
-                                        which we convert to {R0} by considering our estimate of the proportion of susceptible population p:
-                                        <br><br>
-                                        ${math_inline('\\mathcal{R}_t = \\mathcal{R}_0 * p')}
-                                        
-                                        <br><br>
-                                        If you would like to double-check our computations on Finnish data, see
-                                        <a href="https://github.com/futurice/covid-19-R_t-estimating/blob/master/finland.ipynb">this notebook</a>.
-                                        
                                         `
 
   }
