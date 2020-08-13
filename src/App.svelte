@@ -460,7 +460,7 @@
 
     // Filter out milestones which are outside the currently zoomed in area
     milestones = milestones.filter(milestone => {
-      return milestone[0] < 300*dt
+      return milestone[0] < 100*dt
     })
 
     return milestones
@@ -790,7 +790,7 @@
       <!-- Buttons on thee right side of chart: zoom and add. -->
       <div>
         {#if selectedModel === MODEL_GOH}
-        <div on:click={addActionMarker} title="Add new action marker">
+        <div on:click={addActionMarker} title="Añadir acción">
           <Icon data={plus}
             scale=2.5
             class="clickableIcons"
@@ -888,7 +888,7 @@
 {#if popupHTML !== ''}
   <div class="center" style="padding-bottom: 0px;">
     <div style="position: absolute; width: 950px; background-color: white; border: 1px solid #CCC; border-radius: 5px; z-index: 999999;">
-      <div on:click={closePopup} title="Close">
+      <div on:click={closePopup} title="Cerrar">
         <Icon data={times}
           scale=3
           class="clickableIcons"

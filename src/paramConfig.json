@@ -32,7 +32,7 @@
     "days_from_incubation_to_infectious": {
         "description": "Duracion del periodo de incubación {Tinc}",
         "isDefaultValueAutomaticallyGeneratedFromData": false,
-        "defaultValue": 14.0,
+        "defaultValue": 12.0,
         "minValue": 0.15,
         "maxValue": 24,
         "stepValue": 0.0001,
@@ -42,7 +42,7 @@
         "longformDescription": " El periodo de incubación se refiere al tiempo que le toma al infectado convertirse en infeccioso.",
         "longformDoNotConfuseWith": "Normalmente este termino se utiliza para referirse al tiempo que tarda el infectado en convertirse en sintomatico, no es el caso para este modelo.",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo.",
-        "longformDefaultValueJustification": "We assume that patients become infectious on average one day before they start showing symptoms. Therefore, length of the incubation period here should be slightly less than what is believed to be the time period from infection to showing symptoms."
+        "longformDefaultValueJustification": "Se toma el supuesto de que los pacientes se vuelven infecciosos en promedio un día antes de que comiencen a mostrar síntomas. Por lo tanto, la duración del período de incubación aquí debería ser ligeramente menor que el que se cree que es el período de tiempo desde la infección hasta que se muestran los síntomas."
     },
     "days_from_infectious_to_not_infectious": {
         "description": "Duración del periodo infeccioso {Tinf}",
@@ -57,7 +57,7 @@
         "longformDescription": "Average number of days a patient is infectious.",
         "longformDoNotConfuseWith": "Note that in our model a patient is considered to be non-infectious after they isolate to either home or hospital. Therefore, this parameter should be set to a value which is less than the number of days that a patient is physically able to spread the virus (a patient may be physically able to spread the virus by coughing, but if they are coughing at home, they are considered to be non-infectious in our model).",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo.",
-        "longformDefaultValueJustification": "Some people will never develop symptoms and they will infect other people for a long time. Some people will develop symptoms fast and isolate fast. Some people become infectious before developing symptoms, and after developing syptoms they may still be interacting in the community for a short while, until they isolate themselves. On average we believe patients will be infectious about 1 day without symptoms and about 1 day after symptoms, yielding the default value 2. This parameters is very contentious and we do not have good references for our choice of a default value."
+        "longformDefaultValueJustification": "Algunas personas nunca desarrollarán síntomas e infectarán a otras personas durante mucho tiempo. Algunas personas desarrollarán síntomas con rapidez y se aislarán rápidamente. Algunas personas se vuelven infecciosas antes de desarrollar síntomas, y después de desarrollar los síntomas, es posible que todavía estén interactuando en la comunidad por un corto tiempo, hasta que se aíslen. En promedio, se cree que los pacientes serán infecciosos aproximadamente 1 día sin síntomas y aproximadamente 1 día después de los síntomas, lo que arroja el valor predeterminado 2. Este parámetro es muy polémico por eso se ha tomado el informado por el Ministerio de Salud de 5.8 días. "
     },
     "fatality_rate": {
         "description": "Tasa de mortalidad",
@@ -69,8 +69,8 @@
         "unitsDescriptor": "%",
         "isInteger": false,
         "isPercentage": true,
-        "longformDescription": "Percentage of fatalities from all infections (including undiagnosed infections).",
-        "longformDoNotConfuseWith": "Newspapers often refer to <i>case</i> fatality rate, which sometimes refer to percentage of fatalities from confirmed cases, and sometimes to percentage of fatalities from closed cases. In the original Epidemic Calculator this parameter was titled 'case fatality rate', but it was in fact referring to infection fatality rate (confirmed cases are not plotted in neither Epidemic Calculator nor Corosim). ",
+        "longformDescription": "Porcentaje de muertes de todas las infecciones incluyendo las no detectadas.",
+        "longformDoNotConfuseWith": "Los periódicos a menudo se refieren a la tasa de mortalidad de <i> casos </i>, que a veces se refiere al porcentaje de muertes de casos confirmados y, a veces, al porcentaje de muertes de casos cerrados. En Epidemic Calculator, este parámetro se titulaba case fatality rate, pero de hecho se refería a la tasa de letalidad por infección (los casos confirmados no se representan en Epidemic Calculator ni en Corosim, naturalmente en esta calculadora tampoco).",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo.",
         "longformDefaultValueJustification": "https://www.medrxiv.org/content/10.1101/2020.05.03.20089854v1"
     },
@@ -84,10 +84,10 @@
         "unitsDescriptor": "days",
         "isInteger": false,
         "isPercentage": false,
-        "longformDescription": "Average number of days in hospital or ICU (excluding population who spend 0 days in hospital).",
-        "longformDoNotConfuseWith": "In the original Epidemic Calculator, length of hospital stay affected only those patients who eventually survived, not those who eventually died. In Corosim this slider affects all hospitalizations. Also note that our model has some simplifying assumptions related to ICU; this parameter affects both regular ward and ICU stay, and ICU is modeled as an alternative track to regular ward, in comparison to reality, where patients typically go to ICU after first spending time in regular ward.",
-        "longformEffects": "This parameter affects the 'recovered' numbers in historical estimates. However, it does not affect the hospitalization and ICU numbers in historical estimates, because we get those numbers from actual data (so we don't need to estimate them).<br><br>This parameter affects model predictions (hospitalized, icu and recoveries).",
-        "longformDefaultValueJustification": "The Finnish Health Authority THL, in their first Coronavirus modelling related webinar, said that average hospitalization in regular ward in Finland was 8 days, 30% of those patients ended up in the ICU, and the ICU duration was 12 days. According to these numbers, the average length of hospital stay would be 8+0.3*12 = 11.6."
+        "longformDescription": "romedio de días de hospitalización o UCI (excluida la población que permanece 0 días en el hospital).",
+        "longformDoNotConfuseWith": "En Epidemic Calculator, la duración de la estadía en el hospital afectaba solo a los pacientes que finalmente sobrevivieron, no a los que finalmente murieron. En Corosim, este slider afecta a todas las hospitalizaciones. También se debe tener en cuenta que el modelo de Corosim tiene algunos supuestos simplificadores en relación con las UCI, este parámetro afecta tanto la estancia regular en la sala como en la UCI, y la UCI se modela como una vía alternativa a la sala regular, en comparación con la realidad, donde los pacientes suelen ir a la UCI después de pasar por primero por una sala regular.",
+        "longformEffects": "Este parámetro afecta la cifra de recuperados en las estimaciones históricas. Sin embargo, no afecta los números de hospitalizaciones y UCI en estimaciones históricas, debido a que estos números se obtienen de datos observados (por lo que no es necesario estimarlos). <br> <br> Este parámetro afecta las predicciones del modelo (hospitalizaciones, UCI y recuperados).",
+        "longformDefaultValueJustification": "Estos datos estan ajustados de acuerdo con informacion proveida por el Ministerio de Salud."
     },
     "days_in_mild_recovering_state": {
         "description": "Tiempo de recuperación de casos moderados",
@@ -102,7 +102,7 @@
         "longformDescription": "The average number of days a non-severe cases spends isolated in home.",
         "longformDoNotConfuseWith": "",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo.",
-        "longformDefaultValueJustification": "This value is very contentious, because we do not have good data on the proportion of asymptomatic cases, who spend 0 days isolated in home, thus dragging down the average."
+        "longformDefaultValueJustification": "Este valor es muy polémico, porque no disponemos de buenos datos sobre la proporción de casos asintomáticos, que pasan 0 días aislados en casa, arrastrando así la media."
     },
     "hospitalization_rate": {
         "description": "Tasa de hospitalización",
@@ -115,10 +115,10 @@
         "unitsDescriptor": "%",
         "isInteger": false,
         "isPercentage": true,
-        "longformDescription": "Hospitalization as a percentage of all infections. Includes ICU hospitalizations.",
-        "longformDoNotConfuseWith": "In the original Epidemic Calculator there is a slider with the same name, but it actually affects only those hospitalizations who eventually survive. The true hospitalization rate in Epidemic Calculator is actually the displayed hospitalization rate plus infected fatality rate (which is labelled 'case fatality rate'). In other words, the parameter value was mislabeled. We could have resolved this in a few different ways. For example, we could have simply labelled the parameter value correctly ('hospitalization rate, excluding people who eventually die'). That would have been awkward for end users. Instead, we chose to to keep the parameter label simple ('Hospitalization rate') and make the displayed value conform to that description. So the value displayed to end users is hospitalization_rate_excluding_fatalities + fatality_rate. You can verify this by moving the fatality rate slider; you will notice that the hospitalization rate changes as well.",
-        "longformEffects": "This parameter affects the 'recovered' numbers in historical estimates. However, it does not affect the hospitalization and ICU numbers in historical estimates, because we get those numbers from actual data (so we don't need to estimate them).<br><br>This parameter affects model predictions (hospitalized, icu and recoveries).",
-        "longformDefaultValueJustification": "We can calculate the expected number of hospitalizations based on confirmed case counts. Using this default value (and the default values of other parameters), the expected number of hospitalizations roughly matches the actual hospitalization numbers released by THL. This analysis for performed with data which was available on 14.5.2020. For more information, we refer to source code and to our explanation of historical estimates."
+        "longformDescription": "Hospitalización como porcentaje de todas las infecciones. Incluye hospitalizaciones en UCI.",
+        "longformDoNotConfuseWith": "En Epidemic Calculator hay un slider con el mismo nombre, pero en realidad solo afecta a las hospitalizaciones que finalmente sobreviven. La tasa de hospitalización real en Epidemic Calculator es en realidad la tasa de hospitalización mostrada más la tasa de mortalidad de los infectados (que es etiquetado como fatality rate). En otras palabras, el valor del parámetro estaba mal etiquetado.",
+        "longformEffects": "Este parámetro afecta las cifras 'recuperados' en las estimaciones históricas. Sin embargo, no afecta las cifras de hospitalización y UCI en las estimaciones históricas, porque obtenemos esas cifras a partir de datos reales (por lo que no es necesario estimarlas ). <br> <br> Este parámetro afecta las predicciones del modelo (hospitalizados, UCI y recuperaciones).",
+        "longformDefaultValueJustification": ""
     },
     "icu_rate_from_hospitalized": {
         "description": "Tasa de UCI <br>(solo visualización)",
@@ -130,10 +130,10 @@
         "unitsDescriptor": "%",
         "isInteger": false,
         "isPercentage": true,
-        "longformDescription": "Percentage of ICU patients out of all hospitalizations.",
-        "longformDoNotConfuseWith": "With regards to model predictions, ICU rate is not part of the core model. We added this as a small visualization to get 'ballpark' numbers. The core model does not segregate hospitalizations into regular ward and ICU patients. For example, if the core model predicts 1000 hospitalizations for a given day and ICU ratio is set to 30%, then we visualize the results by showing 700 in regular ward and 300 in ICU. This is equivalent to assuming that the 'ICU track' is an alternative track to 'regular ward track' and assuming that the length of ICU hospitalization is equivalent to length of regular ward hospitalization. In reality, ICU patients will typically visit the regular ward first, and the duration of their hospitalization will be longer than the duration of regular ward patients' hospitalization.",
+        "longformDescription": "Porcentaje de pacientes en UCI de todas las hospitalizaciones.",
+        "longformDoNotConfuseWith": "Con respecto a las predicciones del modelo, la tasa de la UCI no es parte del modelo central. Esto fue agregado como una pequeña visualización para obtener números 'aproximados'. El modelo central no segrega las hospitalizaciones en pacientes regulares en la sala y en la UCI. Por ejemplo, si el El modelo básico predice 1000 hospitalizaciones para un día determinado y la proporción de la UCI se establece en 30%, luego visualizamos los resultados mostrando 700 en la sala normal y 300 en la UCI. Esto equivale a suponer que la 'vía de la UCI' es una vía alternativa a 'seguimiento regular de la sala' y asumiendo que la duración de la hospitalización en la UCI es equivalente a la duración de la hospitalización regular en la sala. En realidad, los pacientes de la UCI normalmente visitarán la sala regular primero y la duración de su hospitalización será mayor que la duración de la sala regular hospitalización de pacientes.",
         "longformEffects": "Este parametro afecta los estimados históricos.<br><br> Este parametro afecta las predicciones del modelo (Hospitalizaciones y UCI).",
-        "longformDefaultValueJustification": "Given the assumptions described above, ICU ratio can be set to the observed ratio between active ICU patients and all active hospitalizations. The 30-day average for this ratio was 30% with the data that was available on 14.5.2020."
+        "longformDefaultValueJustification": ""
     },
     "icu_capacity": {
         "description": "Capacidad UCI <br>(solo visualización)",

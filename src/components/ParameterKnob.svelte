@@ -78,7 +78,7 @@
             {@html stylizeExpressions(p.description)}
         </div>
 
-        <div on:click={displayPopup} title="Learn more">
+        <div on:click={displayPopup} title="Mas información">
             <Icon data={question}
             scale=1.0
             class="clickableIcons"
@@ -88,7 +88,7 @@
 
         <!-- Default value 'D' button (or flask, if default value is automatically generated from data) -->
         {#if p.isDefaultValueAutomaticallyGeneratedFromData}
-            <div on:click={() => value = p.defaultValue} title="Estimate from data">
+            <div on:click={() => value = p.defaultValue} title="Estimado de los datos">
 
                 <!-- This if/else is a workaround to a Svelte bug which would otherwise prevent us from changing the color of the SVG. -->
                 {#if value === p.defaultValue}
@@ -99,7 +99,7 @@
 
             </div>
         {:else}
-            <div on:click={() => value = p.defaultValue} title="Default value" style="font-size: 16px;">
+            <div on:click={() => value = p.defaultValue} title="Valor predeterminado" style="font-size: 16px;">
                 <button class="clickableIcons unselectable"
                         style="color: {value === p.defaultValue ? '#777' : '#CCC'};
                                position: absolute;
