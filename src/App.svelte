@@ -126,8 +126,8 @@
   $: icuCapacity       = paramConfig["icu_capacity"].defaultValue
 
   function toggleZoomStates() { 
-    dt *= 2
-    if (dt > 4) dt = 2
+    dt += 2
+    if (dt > 6) dt = 2
   }
 
   function closePopup() {

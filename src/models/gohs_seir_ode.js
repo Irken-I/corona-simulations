@@ -32,7 +32,7 @@ export function get_solution_from_gohs_seir_ode(actionMarkersForGoh, historical_
     const D_death = D_hospital
 
     var interpolation_steps = 40
-    var days_to_simulate = 400
+    var days_to_simulate = 600
     var steps = 101*interpolation_steps*days_to_simulate/100
     var dt = 1/interpolation_steps
     var sample_step = interpolation_steps
