@@ -23,9 +23,9 @@
 
     function displayPopup() {
         popupHTML = `${f(p.description, p.longformDescription)}
-                     ${f("Should not be confused with", p.longformDoNotConfuseWith)}
-                     ${f("Effects", p.longformEffects)}
-                     ${f("Justification for default value", p.longformDefaultValueJustification)}`
+                     ${f("No se debe confundir con", p.longformDoNotConfuseWith)}
+                     ${f("Efectos", p.longformEffects)}
+                     ${f("Justificación del valor por defecto", p.longformDefaultValueJustification)}`
     }
 
 </script>

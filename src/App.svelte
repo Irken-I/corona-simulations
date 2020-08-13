@@ -974,18 +974,11 @@
 
   <Collapsible title="Reconocimientos" bind:collapsed={collapsed} defaultCollapsed={false}> 
     <div>
-      { (oneLineAttribution)}
-    </div>
-    <div>
-      A continuacion se encuentran los enlaces a las calculadoras mencionadas.
-    </div>
-    <div>
-      <a href="https://corosim.fi/">Corosim.</a>
-      <a href="https://gabgoh.github.io/COVID/index.html">Epidemic Calculator</a>.
+      Esta es una adaptación de <a href="https://corosim.fi/">Corosim</a>, la calculadora de Futurice hecha por <a href="https://www.attejuvonen.fi/about/">Atte Juvonen</a> y su equipo sobre <a href="https://gabgoh.github.io/COVID/index.html">Epidemic Calculator</a> de <a href="https://gabgoh.github.io/">Gabriel Goh.</a>
     </div>
 
     <div>
-      Para hacer esta adaptacion, conté con la valiosa ayuda de Enrique Tovar y de Camilo Mendoza quienes me dieron apoyo técnico y de Cristhian Gonzales en el diseño gráfico. 
+      Para hacer esta adaptación, conté con la valiosa ayuda de <a href="https://github.com/jmtov">Enrique Mejia </a> y de <a href="https://github.com/camendoza94">Camilo Mendoza </a>  quienes me dieron apoyo técnico y de <a href="https://www.behance.net/crisangocu?fbclid=IwAR1Gwr99VeMPNMJoLwmdPAkeYf6Taa87LWvSHGm0uBuPFb4UpTv8L4wR_hc">Cristhian González</a> en el diseño gráfico. 
     </div>
 
     <div>
