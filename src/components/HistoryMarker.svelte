@@ -56,7 +56,7 @@
             const minX = 1
             const maxX = lastHistoricDay + 1
             if (draggedX > maxX+3) {
-                flashMessage = 'Historical data is available up to day ' + lastHistoricDay
+                flashMessage = 'Los datos históricos estan disponible hasta el día' + lastHistoricDay
             } else {
                 flashMessage = ''
             }
