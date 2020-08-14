@@ -247,7 +247,7 @@
           </g>
         -->
 
-        {#if i%30 == 0}
+        {#if i%30 == 10}
           {#if getDate(firstBarDate, i).endsWith("01.2021")}
             <g class="tick" transform="translate({xScaleTime(i - xLabelOffset)},{height})">
               <text x="0" y="-4">2021</text>
