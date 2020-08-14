@@ -93,7 +93,7 @@
                 const minX = P_all_historical.length
                 const maxX = tmax-1
                 if (draggedX < minX-3) {
-                    flashMessage = 'Action markers affect model predictions, not historical estimates.'
+                    flashMessage = 'Las nuevas acciones no afectan los históricos estimados.'
                 } else {
                     flashMessage = ''
                 }
