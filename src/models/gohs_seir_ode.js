@@ -151,7 +151,7 @@ export function map_goh_states_into_UFStates(goh_states, N, P_ICU) {
         const infected = Math.round((exposed + infectious + recovering_mild + recovering_severe_home) * N)
         const hospitalized_and_icu = Math.round((hospitalized_will_recover + hospitalized_will_die) * N)
         const hospitalized = Math.round((1 - P_ICU) * hospitalized_and_icu)
-        const icu = Math.round(P_ICU * hospitalized_and_icu)
+        const icu = Math.round(P_ICU * hospitalized_and_icu /3 )
         const recovered = Math.round((recovered_mild + recovered_severe) * N)
         const fatalities = Math.round(dead * N)
 
