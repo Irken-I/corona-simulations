@@ -8,7 +8,7 @@ const estimatesForMissingHospitalizationData = require('./data/estimates_for_mis
 const paramConfig = require('./src/paramConfig.json');
 
 const lastMidnight = new Date().setUTCHours(0,0,0,0);
-const cutoffDays = 3 // For example, 3 means "cut off today + 3 previous days".
+const cutoffDays = 0 // For example, 3 means "cut off today + 3 previous days".
 
 function notTooRecent(dateTime) {
     const daysFromLastMidnight = Math.round((new Date(dateTime).getTime() - new Date(lastMidnight).getTime()) / 86400000);
