@@ -133,7 +133,7 @@
 
   // This is used to align the names of months on the axis to be roughly at center of those months.
   // If you tune this, remember to use different zoom settings during testing.
-  $: xLabelOffset = Number.parseInt(getDayFromDate(firstBarDate)) - 18
+  $: xLabelOffset = Number.parseInt(getDayFromDate(firstBarDate)) + 5
 
 </script>
 
