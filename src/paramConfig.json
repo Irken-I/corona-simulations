@@ -11,7 +11,7 @@
         "isPercentage": true,
         "longformDescription": "Porcentaje de las infecciones que no son contabilizadas como 'caso confirmado'.",
         "longformDoNotConfuseWith": "",
-        "longformEffects": "Este parametro afecta los estimados historicos, funciona como un multiplicador de los casos confirmados obervados.<br><br> Este parametro no afecta las predicciones del modelo (REVISAR).",
+        "longformEffects": "Este parametro afecta los estimados historicos, funciona como un multiplicador de los casos confirmados obervados.<br><br> Este parametro no afecta las predicciones del modelo.",
         "longformDefaultValueJustification": "Este numero es debatible, en el mundo diferentes estudios sugieren diversos numeros. Tambien tiene implicaciones directas en el numero de hospitalizaciones y la tasa de mortalidad, aunque en este modelo han sido separados."
     },
     "unrecorded_deaths": {
@@ -25,7 +25,7 @@
         "isInteger": false,
         "isPercentage": true,
         "longformDescription": "Porcentaje de muertes causadas por el Covid -19 que no estan contabilziadas dentro de las estadisticas oficiales.",
-        "longformDoNotConfuseWith": "Este parametro afecta los estimados historicos, funciona como un multiplicador de los casos confirmados obervados.<br><br> Este parametro no afecta las predicciones del modelo (REVISAR).",
+        "longformDoNotConfuseWith": "Este parametro afecta los estimados historicos, funciona como un multiplicador de los casos confirmados obervados.<br><br> Este parametro no afecta las predicciones del modelo.",
         "longformEffects": "",
         "longformDefaultValueJustification": "Aun no es claro cual es el porcentaje de muertes no contabilziadas (AÑADIR FUENTE)"
     },
