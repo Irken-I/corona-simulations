@@ -38,7 +38,7 @@ async function callbackRtEstimate(response) {
         const lastLine = splitted[splitted.length-2]
         const lastRtEstimateValue = Number.parseFloat(lastLine.split(',')[1])
         const lastRtEstimateDate = lastLine.split(',')[0]
-        console.log('Last Rt estimate:', lastRtEstimateValue+ 0.2, lastRtEstimateDate)
+        console.log('Last Rt estimate:', lastRtEstimateValue+ 0.17, lastRtEstimateDate)
         if (lastRtEstimateValue+0.2 > 0 && lastRtEstimateValue < 10) {
             write(
                 'data/latest_Rt.csv',
