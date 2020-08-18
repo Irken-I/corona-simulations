@@ -9,7 +9,7 @@ export class ActionMarkerData {
     constructor(day, name, effect, expanded) {
         this[AM_ID] = 'AM_id_' + Math.ceil(Math.random() * 10000000000000.0) // Needed for drag event listeners
         this[AM_DAY] = day
-        this[AM_NAME] = name || 'Action'
+        this[AM_NAME] = name || 'Acción'
         this[AM_EFFECT] = -effect || undefined
         this[AM_EXPANDED] = expanded || false
     }

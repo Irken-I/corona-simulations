@@ -120,14 +120,14 @@
   $: CFR               = paramConfig["fatality_rate"].defaultValue
   $: Time              = 220
   $: Xmax              = 110000
-  $: dt                = 2
+  $: dt                = 3
   $: P_SEVERE          = paramConfig["hospitalization_rate"].defaultValue
   $: P_ICU             = paramConfig["icu_rate_from_hospitalized"].defaultValue
   $: icuCapacity       = paramConfig["icu_capacity"].defaultValue
 
   function toggleZoomStates() { 
-    dt += 2
-    if (dt > 6) dt = 2
+    dt += 3
+    if (dt > 6) dt = 3
   }
 
   function closePopup() {
@@ -955,7 +955,18 @@
     
   </div>
 
+  <Collapsible title="Instrucciones" bind:collapsed={collapsed} defaultCollapsed={false}> 
+    <div>
+      Cambia los parametros de acuerdo a tus propias perspectivas, el parametro mas importante es el llamado R0, si lo ajustas veras grandes cambios. 
+    </div>
+
+  </Collapsible>
+
   <Collapsible title="Reconocimientos" bind:collapsed={collapsed} defaultCollapsed={false}> 
+    <div>
+     Hola soy Juan =) 
+    </div>
+
     <div>
       Esta es una adaptación de <a href="https://corosim.fi/">Corosim</a>, la calculadora de Futurice hecha por <a href="https://www.attejuvonen.fi/about/">Atte Juvonen</a> y su equipo sobre <a href="https://gabgoh.github.io/COVID/index.html">Epidemic Calculator</a> de <a href="https://gabgoh.github.io/">Gabriel Goh.</a>
     </div>
@@ -965,7 +976,7 @@
     </div>
 
     <div>
-      Para sugerencias y preguntas me puede contactar en juansebastianpuentesc@gmail.com. 
+      Para sugerencias y preguntas me puedes contactar en juansebastianpuentesc@gmail.com. 
     </div>
 
   </Collapsible>
