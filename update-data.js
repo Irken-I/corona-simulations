@@ -38,11 +38,11 @@ async function callbackRtEstimate(response) {
         const lastLine = splitted[splitted.length-2]
         const lastRtEstimateValue = Number.parseFloat(lastLine.split(',')[1])
         const lastRtEstimateDate = lastLine.split(',')[0]
-        console.log('Last Rt estimate:', lastRtEstimateValue, lastRtEstimateDate)
-        if (lastRtEstimateValue> 0 && lastRtEstimateValue < 10) {
+        console.log('Last Rt estimate:', lastRtEstimateValue - 0.13, lastRtEstimateDate)
+        if (lastRtEstimateValue-0.13 > 0 && lastRtEstimateValue < 10) {
             write(
                 'data/latest_Rt.csv',
-                `date,Rt\n${lastRtEstimateDate},${lastRtEstimateValue}`
+                `date,Rt\n${lastRtEstimateDate},${lastRtEstimateValue-0.13}`
             )
         } else {
             process.exit(1); // Prevent build if estimate out of bounds.
