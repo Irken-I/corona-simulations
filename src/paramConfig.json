@@ -123,7 +123,7 @@
     "icu_rate_from_hospitalized": {
         "description": "Tasa de UCI <br>(solo visualización)",
         "isDefaultValueAutomaticallyGeneratedFromData": false,
-        "defaultValue": 0.3,
+        "defaultValue": 0.03,
         "minValue": 0,
         "maxValue": 1,
         "stepValue": 0.01,
