@@ -1,9 +1,3 @@
-# Corosim
-
-Deployed & explained here:
-
-https://corosim.fi/
-
 ## Initial setup
 
 ```bash
